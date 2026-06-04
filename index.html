@@ -175,6 +175,19 @@
       color:#fff;font-family:var(--bl-font-body);}
     .bl-reviews-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
     @media (max-width: 700px){.bl-reviews-grid{grid-template-columns:1fr;}}
+
+    /* Benefit cards (from service page) */
+    .bl-benefits-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px;}
+    .bl-benefit-card{background:var(--bl-paper);border:1px solid var(--bl-line);padding:32px 24px;
+      text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;
+      transition:transform var(--bl-dur-base) var(--bl-ease),box-shadow var(--bl-dur-base) var(--bl-ease);}
+    .bl-benefit-card:hover{transform:translateY(-4px);box-shadow:var(--bl-shadow-card);}
+    .bl-benefit-card__icon{width:60px;height:60px;border-radius:50%;background:var(--bl-blush);
+      display:flex;align-items:center;justify-content:center;color:var(--bl-ink);flex-shrink:0;}
+    .bl-benefit-card__icon svg{width:26px;height:26px;}
+    .bl-benefit-card__title{font-family:var(--bl-font-display);font-size:clamp(16px,1.4vw,22px);
+      text-transform:uppercase;letter-spacing:.04em;line-height:1.2;}
+    .bl-benefit-card__sub{font-size:13px;color:var(--bl-fg-mute);margin:0;}
     .bl-rating-summary{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap;}
     .bl-rating-summary__stars{color:var(--bl-blush-deep);letter-spacing:.1em;font-size:15px;}
     .bl-rating-summary strong{font-weight:500;font-size:14px;}
@@ -1010,6 +1023,7 @@
       .bl-footer { padding-bottom: 80px; }
 
       .bl-services-grid { grid-template-columns: 1fr; }
+      .bl-benefits-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 600px) {
@@ -1020,6 +1034,7 @@
       .bl-hero-actions { flex-direction: column; }
       .bl-coin { width: 100px; height: 100px; font-size: 12px; }
       .bl-faq { margin-top: 24px; }
+      .bl-benefits-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 400px) {
