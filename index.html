@@ -91,24 +91,22 @@
         params = params || {};
         var source = 'other';
         try { source = sessionStorage.getItem('traffic_source') || 'other'; } catch(e) {}
-        if (source !== 'meta_ads') {
-          gtag('event', ga4Name, params);
-        }
-        if (source === 'meta_ads') {
-          try {
-            if (typeof fbq !== 'undefined') {
-              if (ga4Name === 'form_submit' || ga4Name === 'book_click') {
-                fbq('trackCustom', 'book_click', params);
-              } else if (ga4Name.indexOf('whatsapp') !== -1) {
-                fbq('trackCustom', 'whatsapp_click', params);
-              } else if (ga4Name.indexOf('phone') !== -1 || ga4Name.indexOf('call') !== -1) {
-                fbq('trackCustom', 'phone_click', params);
-              } else {
-                fbq('trackCustom', ga4Name, params);
-              }
+        // GA4 fires for ALL traffic (no source segmentation)
+        gtag('event', ga4Name, params);
+        // Meta Pixel fires for ALL traffic (no source segmentation)
+        try {
+          if (typeof fbq !== 'undefined') {
+            if (ga4Name === 'form_submit' || ga4Name === 'book_click') {
+              fbq('trackCustom', 'book_click', params);
+            } else if (ga4Name.indexOf('whatsapp') !== -1) {
+              fbq('trackCustom', 'whatsapp_click', params);
+            } else if (ga4Name.indexOf('phone') !== -1 || ga4Name.indexOf('call') !== -1) {
+              fbq('trackCustom', 'phone_click', params);
+            } else {
+              fbq('trackCustom', ga4Name, params);
             }
-          } catch(e) {}
-        }
+          }
+        } catch(e) {}
         // Yandex.Metrica reachGoal
         try {
           if (typeof ym !== 'undefined') {
